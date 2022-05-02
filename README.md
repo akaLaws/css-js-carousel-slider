@@ -8,7 +8,7 @@ This example also uses JS to change a CSS variable.
 
 When clicking or using arrows or the corresponding letters for navigation the images and text content slides left or right. 
 
-**Subjects it gets around**
+**Subjects it gets around
 (besides the basic HTML and CSS)
 * CSS transitions
 * CSS variables
@@ -24,4 +24,4 @@ When clicking or using arrows or the corresponding letters for navigation the im
 * As always a ton of comments
 
 ### Have fun 🤘
-* -Sarah-Elizabeth *
+*-Sarah-Elizabeth
