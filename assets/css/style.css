@@ -1,6 +1,19 @@
 /* Import font awesome kit for the arrows - remember to import your own kit if needed */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
+/*************************************/
+/* ROOT VARIABLES */
+:root {
+
+    /* 
+       Transition variables (See bottom of document for further explanation):
+       - slideDirection is set for 0 for "next" and "-100%" for previous - variables changed by JS 
+       - Default is set for "next" transition
+    */
+    --slideDirection: 0;
+}
+
+/*************************************/
 /* RESET SETTING */
 *{
     margin: 0;
@@ -21,7 +34,16 @@
     overflow: hidden;
 }
 
+/* 
+   For the transition, following properties are required for parent class: 
+   position: relative is required for "next/left" transition to work 
+   left: 0 is required for a starting state of animation 
+*/
+
 .carouselcontainer__slide{
+    position: relative;
+    transition: all 500ms ease;
+
     height: 100%;
     min-width: 100%;
     max-width: 100%;
@@ -33,8 +55,8 @@
 /*************************************/
 /* CAROUSEL SLIDER - TRANSITION */
 .carouselcontainer__slide:nth-of-type(1) {
-    transition: margin-left 500ms ease;
     margin-left: -100%;
+    left: var(--slideDirection);
 }
 
 /*************************************/
@@ -116,3 +138,12 @@
 }
 
 
+/*
+DIFFERENCE BETWEEN LEFT AND MARGIN LEFT IN REGARD TO SLIDING DIRECTION:
+
+Left is the position of your entire element, margin-left is the amount of your left margin. 
+For example if your are not in a normal document flow, your left margin is not going to let anything occupy that space. 
+If you just simply move the element from the left, 
+theoretically there is nothing there to occupy the space, and other elements can move in to that space.
+
+/*
