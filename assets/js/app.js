@@ -1,10 +1,14 @@
 // Short hand variables and constants
+// Target root in CSS for variable get/set
+let CSS_VARIABLE = document.querySelector(":root");
+
 // Get  wrapper and container elements from the HTML
 const CAROUSEL_WRAPPER = document.getElementsByClassName("carouselwrapper")[0];
 const CAROUSEL_CONTAINER = CAROUSEL_WRAPPER.querySelector(".carouselcontainer")
 
+
 // Create an article for each element in the slide array (from slide.js)
-// Remember to generate the HTML - BEFORE - Getting the element through query selector (_0 -) <-- this is a facepalm
+// Remember to generate the HTML - BEFORE - Getting the element through query selector (_0 -) <-- this is a facepalm based on my own forgetfulness
 SLIDE_ARRAY.forEach(function(){
     CAROUSEL_CONTAINER.innerHTML += '<article class="carouselcontainer__slide"></article>';
 });
@@ -47,6 +51,10 @@ function resetSlides(){
 
 // Previous slide
 function prevSlide(){
+    // Sets transition to a left/prev slide in CSS by changing the variables in regard direction for transition
+    // Do this BEFORE the JS actions for the array manipulation to account for sequential coding
+    CSS_VARIABLE.style.setProperty("--slideDirection", "-100%");
+
     // Defines the last slide as the image contained in the last position of the slide array
     const LAST_SLIDE = document.querySelectorAll(".carouselcontainer__slide")[SLIDE_ARRAY.length - 1];
 
@@ -61,6 +69,10 @@ function prevSlide(){
 
 //Next slide
 function nextSlide(){
+    // Sets transition to a right/next slide in CSS by changing the variables in regard to direction for transition
+    // Do this BEFORE the JS actions for the array manipulation to account for sequential coding
+    CSS_VARIABLE.style.setProperty("--slideDirection", "0");
+
      // Defines the last slide as the image contained in the first position of the slide array
      const FIRST_SLIDE = document.querySelectorAll(".carouselcontainer__slide")[0];
     
